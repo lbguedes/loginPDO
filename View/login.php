@@ -7,6 +7,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 require_once '../controller/cLogin.php';
 $login = new cLogin();
 
+
 ?>
 <html>
     <head>

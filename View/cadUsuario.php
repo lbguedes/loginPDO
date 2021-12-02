@@ -3,14 +3,20 @@
 Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
 Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to edit this template
 -->
+<?php
+require_once '../controller/cUsuario.php';
+$cadUser = new cUsuario();
+?>
+
 <html>
     <head>
         <meta charset="UTF-8">
         <title></title>
     </head>
     <body>
+        <a href="../controller/logout.php">Sair</a>
         <h1>Cadastro de Usuários</h1>
-        <form method="POST">
+        <form action="<?php $cadUser->inserir(); ?>" method="POST">
             <input type="text" name="nome" placeholder="Nome aqui..."/>
             <br>
             <input type="email" name="email" placeholder="E-mail aqui..."/>
