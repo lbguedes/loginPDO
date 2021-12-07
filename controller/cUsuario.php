@@ -11,14 +11,15 @@
  * @author laura
  */
 class cUsuario {
+
     //put your code here
-    
-    public function inserir (){
-        if(isset($_POST['salvar'])){
+
+    public function inserir() {
+        if (isset($_POST['salvar'])) {
             $nome = $_POST['nome'];
             $email = $_POST['email'];
             $pas = $_POST['pas'];
-            
+
             $pdo = require_once '../PDO/connection.php';
             $sql = "insert into usuario (nomeUser, email, pas) values (?,?,?)";
             $sth = $pdo->prepare($sql);
@@ -31,4 +32,17 @@ class cUsuario {
             unset($pdo);
         }
     }
+
+    public function getUsuario() {
+        $pdo = require_once '../PDO/connection.php';
+        $sql = "select idUser, nomeUser, email from usuario";
+        $sth = $pdo->prepare($sql);
+        $sth->execute();
+        $result = $sth->fetch(PDO::FETCH_ASSOC);
+        unset($sth);
+        unset($pdo);
+        return $result;
+    }
+    
+  
 }

@@ -31,7 +31,7 @@ class cLogin {
                     $_SESSION['usuario'] = $result['nomeUser'];
                     $_SESSION['email'] = $result['email'];
                     $_SESSION['logado'] = true;
-                    header("Location: cadUsuario.php");
+                    header("Location: ../index.php");
                 }else{
                     echo "<br> Não foi possível logar!";
                     header("Location: login.php");

@@ -6,13 +6,13 @@
  */
 
 //Inicializa a sessão
-session_start ();
+session_start();
 
 //Renova todas as variaveis da sessão
 $_SESSION = array ();
 
 //Destroi a sessão
-session_destroy ();
+session_destroy();
 
 //Redirecionar para tela de login após logou
 header("Location: ../view/login.php");

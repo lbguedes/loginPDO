@@ -4,6 +4,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to c
 Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to edit this template
 -->
 <?php
+session_start();
+if(!isset($_SESSION['logado']) && $_SESSION['logado'] !=true){
+    header("Location: login.php");
+}else{
+    echo $_SESSION['usuario'] . " | " . $_SESSION['email'];
+    echo " | <a href='../controller/cLogout.php'>Sair</a>";
+}
 require_once '../controller/cUsuario.php';
 $cadUser = new cUsuario();
 ?>
@@ -14,7 +21,6 @@ $cadUser = new cUsuario();
         <title></title>
     </head>
     <body>
-        <a href="../controller/logout.php">Sair</a>
         <h1>Cadastro de Usuários</h1>
         <form action="<?php $cadUser->inserir(); ?>" method="POST">
             <input type="text" name="nome" placeholder="Nome aqui..."/>
@@ -25,6 +31,8 @@ $cadUser = new cUsuario();
             <br> 
             <input type="submit" name="salvar" value="Salvar"/>
             <input type="reset" name="limpar"  value="Limpar"/>
+            <input type="button" value="voltar" onclick="location.href='../index.php'"/>
+            <input type="button" value="Lista de Usuários" onclick="location.href='listaUsuario.php'"/>
         </form>
         <?php
         // put your code here
