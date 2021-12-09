@@ -32,13 +32,18 @@ $listaUser = $cadUser->getUsuario();
             </tr>
                 <?php foreach ($listaUser as $user): ?>
                 <tr>
-                    <td><?php echo $user['idUser'] ?></td>
-                    <td><?php echo $user['nomeUser'] ?></td>
-                    <td><?php echo $user['email'] ?></td>
+                    <td><?php echo $user['idUser']; ?></td>
+                    <td><?php echo $user['nomeUser']; ?></td>
+                    <td><?php echo $user['email']; ?></td>
                     <td>
+                        <form action="editarUser.php" method="POST">
+                            <input type="hidden" value="<?php echo $user['idUser']; ?>" name="idUser"/>
+                            <input type="submit" name="editar" value="Editar"/>
+                        </form>
+                        
                         <?php if($user['email']!=$_SESSION['email']) { ?>
                         <form action="..controller/deleteUser.php" method="POST">
-                            <input type="hidden" value="<?php echo $user['idUser'] ?>" name="idUser"/>
+                            <input type="hidden" value="<?php echo $user['idUser']; ?>" name="idUser"/>
                             <input type="submit"  name="deletar" value="Deletar"/>
                         </form>
                         <?php } ?>

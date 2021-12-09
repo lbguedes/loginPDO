@@ -43,6 +43,16 @@ class cUsuario {
         unset($pdo);
         return $result;
     }
-    
-  
+
+    public function getUsuarioById($id) {
+        $pdo = require_once '../PDO/connection.php';
+        $sql = "select idUser, nomeUser, email from usuario where idUser = ?";
+        $sth = $pdo->prepare($sql);
+        $sth->execute([$id]);
+        $result = $sth->fetch(PDO::FETCH_ASSOC);
+        unset($sth);
+        unset($pdo);
+        return $result;
+    }
+
 }
